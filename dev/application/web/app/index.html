@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Demo Dev</title>
+  <style>
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+      padding: 8px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Demo Dev</h1>
+  <button onclick="window.location.href='/api/'"> go to App Services<button>
+  <button onclick="loadUsers()">Load Users</button>
+  <br><br>
+  <table id="usersTable" style="display:none;">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script>
+    function loadUsers() {
+      fetch('/api/users')
+        .then(res => res.json())
+        .then(users => {
+          const table = document.getElementById('usersTable');
+          const tbody = table.querySelector('tbody');
+          tbody.innerHTML = '';
+          users.forEach(user => {
+            const row = document.createElement('tr');
+            row.innerHTML = `<td>${user.id}</td><td>${user.name}</td><td>${user.email}</td>`;
+            tbody.appendChild(row);
+          });
+          table.style.display = 'table';
+        })
+        .catch(err => {
+          alert('Failed to load users');
+          console.error(err);
+        });
+    }
+  </script>
+</body>
+</html>

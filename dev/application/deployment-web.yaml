@@ -16,7 +16,7 @@ spec:
         app: web-app
     spec:
       containers:
-        - image: colbyx20/web-server:1.0.1
+        - image: colbyx20/web-server:1.0.3
           name: web-server
           resources:
             requests:

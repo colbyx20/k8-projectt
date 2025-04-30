@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: app
-          image: colbyx20/k8-demo:1.0.3
+          image: colbyx20/k8-demo:1.0.6
           ports:
             - containerPort: 3000
           livenessProbe:

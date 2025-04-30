@@ -16,70 +16,66 @@ spec:
         env: dev
     spec:
       containers:
-        - name: app
-<<<<<<< HEAD
-          image: colbyx20/k8-demo:1.0.6
-=======
-          image: colbyx20/k8-demo:1.0.7
->>>>>>> cda15774b73739f75054c2979bb45c4f7e2266b3
-          ports:
-            - containerPort: 3000
-          livenessProbe:
-            httpGet:
-              path: /healthz
-              port: 3000
-            initialDelaySeconds: 5
-            failureThreshold: 10
-            periodSeconds: 10
-          readinessProbe:
-            httpGet:
-              path: /healthz
-              port: 3000
-            initialDelaySeconds: 5
-            failureThreshold: 10
-            periodSeconds: 5
-          resources:
-            requests:
-              memory: "150Mi"
-              cpu: "100m"
-            limits:
-              memory: "550Mi"
-              cpu: "150m"
-          env:
-            - name: PGHOST
-              valueFrom:
-                secretKeyRef:
-                  name: postgres-secrets
-                  key: pghost
-            - name: PGDATABASE
-              valueFrom:
-                secretKeyRef:
-                  name: postgres-secrets
-                  key: pgdb
-            - name: PGPORT
-              valueFrom:
-                secretKeyRef:
-                  name: postgres-secrets
-                  key: pgport
-            - name: PGUSER
-              valueFrom:
-                secretKeyRef:
-                  name: postgres-secrets
-                  key: pguser
-            - name: PGPASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: postgres-secrets
-                  key: pgpass
-            - name: PGDB
-              valueFrom:
-                secretKeyRef:
-                  name: postgres-secrets
-                  key: pgdb
-          volumeMounts:
-            - name: config
-              mountPath: /app/config
-      volumes:
+      - name: app
+        image: colbyx20/k8-demo:1.0.7
+        ports:
+        - containerPort: 3000
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 3000
+          initialDelaySeconds: 5
+          failureThreshold: 10
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /healthz
+            port: 3000
+          initialDelaySeconds: 5
+          failureThreshold: 10
+          periodSeconds: 5
+        resources:
+          requests:
+            memory: "150Mi"
+            cpu: "100m"
+          limits:
+            memory: "550Mi"
+            cpu: "150m"
+        env:
+        - name: PGHOST
+          valueFrom:
+            secretKeyRef:
+              name: postgres-secrets
+              key: pghost
+        - name: PGDATABASE
+          valueFrom:
+            secretKeyRef:
+              name: postgres-secrets
+              key: pgdb
+        - name: PGPORT
+          valueFrom:
+            secretKeyRef:
+              name: postgres-secrets
+              key: pgport
+        - name: PGUSER
+          valueFrom:
+            secretKeyRef:
+              name: postgres-secrets
+              key: pguser
+        - name: PGPASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: postgres-secrets
+              key: pgpass
+        - name: PGDB
+          valueFrom:
+            secretKeyRef:
+              name: postgres-secrets
+              key: pgdb
+        volumeMounts:
         - name: config
-          configMap:
-            name: devcf
+          mountPath: /app/config
+      volumes:
+      - name: config
+        configMap:
+          name: devcf

@@ -16,11 +16,7 @@ spec:
         app: web-app
     spec:
       containers:
-<<<<<<< HEAD
-        - image: colbyx20/web-server:1.0.3
-=======
         - image: colbyx20/web-server:1.0.5
->>>>>>> feature/dev
           name: web-server
           resources:
             requests:

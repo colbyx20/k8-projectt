@@ -51,7 +51,7 @@ spec:
           valueFrom:
             secretKeyRef:
               name: postgres-secrets
-              key: pgdatabase
+              key: pgdb
         - name: PGPORT
           valueFrom:
             secretKeyRef:

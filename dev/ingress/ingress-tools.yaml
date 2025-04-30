@@ -4,7 +4,12 @@ metadata:
   name: argocd-ingress
   namespace: argocd
   annotations:
+<<<<<<< HEAD
     ingress.kubernetes.io/ssl-redirect: "false"
+=======
+    # kubernetes.io/ingress.class: contour-internal
+    ingress.kubernetes.io/force-ssl-redirect: "true"
+>>>>>>> bfe8597470d9d4a43680d2c8049dbe68e3ef2ca3
 spec:
   ingressClassName: traefik
   rules:
@@ -17,4 +22,8 @@ spec:
           service:
             name: argocd-server
             port:
+<<<<<<< HEAD
               number: 443
+=======
+              number: 80
+>>>>>>> bfe8597470d9d4a43680d2c8049dbe68e3ef2ca3

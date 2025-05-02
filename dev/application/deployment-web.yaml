@@ -16,16 +16,12 @@ spec:
         app: web-app
     spec:
       containers:
-<<<<<<< HEAD
-        - image: colbyx20/web-server:1.0.3
-=======
-        - image: colbyx20/web-server:1.0.5
->>>>>>> feature/dev
-          name: web-server
-          resources:
-            requests:
-              memory: "150Mi"
-              cpu: "100m"
-            limits:
-              memory: "550Mi"
-              cpu: "150m"
+      - image: colbyx20/web-server:1.0.5
+        name: web-server
+        resources:
+          requests:
+            memory: "150Mi"
+            cpu: "100m"
+          limits:
+            memory: "550Mi"
+            cpu: "150m"
